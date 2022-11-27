@@ -3,30 +3,44 @@ import React from "react";
 import Head from "next/head";
 import Link from "next/link";
 import dayjs from "dayjs";
+import Layout from "../../components/Layout/Layout";
+import { Paths } from "../../constants/paths";
 
 export default function BlogPage({ posts }: any) {
   return (
-    <React.Fragment>
-      <Head>
-        <title>My Blog</title>
-      </Head>
-      <div className="flex p-3 m-3 content-center justify-center flex-wrap gap-10">
-        {posts.map((frontMatter: any, key: number) => {
-          return (
-            <div className="flex flex-col gap-5 justify-center content-center shrink-0 basis-1/4 ">
-              <Link key={key} href={`/blog/${frontMatter.slug}`} passHref>
-                <h1 className="font-bold">{frontMatter.title}</h1>
-                <p className="summary">{frontMatter.excerpt}</p>
-                <p className="date">
-                  {dayjs(frontMatter.publishedAt).format("MMMM D, YYYY")}{" "}
-                  &mdash; {frontMatter.readingTime}
-                </p>
-              </Link>
-            </div>
-          );
-        })}
-      </div>
-    </React.Fragment>
+    <Layout title="Blog | CodiCrypt" currentRoute={Paths.BLOG}>
+      <section className={`section bg-green-800`}>
+        <div className="text-center">
+          <div className="relative uppercase text-5xl z-10 font-bold">
+            My <span>Blogs</span>
+            <span className="absolute font-black -z-10 text-gray-800 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-8xl">
+              My Blogs
+            </span>
+          </div>
+        </div>
+
+        <div className="blogs-content">
+          <div className="blogs">
+            {posts.map((frontMatter: any, key: number) => {
+              return (
+                <Link key={key} href={`/blog/${frontMatter.slug}`} passHref>
+                  <div className="blog">
+                    <div className="blog-text">
+                      <h4>{frontMatter.title}</h4>
+                      <p>{frontMatter.excerpt}</p>
+                      <p className="date">
+                        {dayjs(frontMatter.publishedAt).format("MMMM D, YYYY")}{" "}
+                        &mdash; {frontMatter.readingTime}
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+    </Layout>
   );
 }
 export async function getStaticProps() {

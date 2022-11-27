@@ -38,15 +38,15 @@ const Layout = ({
 
       <main>{children}</main>
 
-      <div className="controlls">
+      <div className="fixed z-100 top-1/2 right-20 flex flex-col items-center justify-center -translate-y-1/2">
         <>
           {CONTROL_ICONS.map((icon, index) => (
             <Link
               href={icon.key}
               passHref
               key={index}
-              className={`control control-${index} ${
-                icon.key === currentRoute ? "active-btn" : ""
+              className={`control ease-in-out duration-300 p-1 bg-gray-700 w-14 h-14 rounded-full flex justify-center items-center mx-0 my-2  ${
+                icon.key === currentRoute ? "bg-violet-800" : "bg-gray-800"
               }`}
             >
               {" "}

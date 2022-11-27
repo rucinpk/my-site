@@ -11,14 +11,13 @@ import "highlight.js/styles/atom-one-dark-reasonable.css";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { getSlug, getArticleFromSlug } from "../../src/utils/mdx";
 import { SectionTitle, Text } from "../../data/components/mdx-components";
+import Layout from "../../components/Layout/Layout";
+import { Paths } from "../../constants/paths";
 
 export default function Blog({ post: { source, frontmatter } }: any) {
   let title = frontmatter.title + " | My blog";
   return (
-    <>
-      <Head>
-        <title>{title}</title>
-      </Head>
+    <Layout title={title} currentRoute={Paths.BLOG}>
       <div className="article-container">
         <h1 className="article-title">{frontmatter.title}</h1>
         <p className="publish-date">
@@ -29,7 +28,7 @@ export default function Blog({ post: { source, frontmatter } }: any) {
           <MDXRemote {...source} components={{ Image, SectionTitle, Text }} />
         </div>
       </div>
-    </>
+    </Layout>
   );
 }
 // dynamically generate the slugs for each article(s)
