@@ -4,7 +4,6 @@ import {
   faBriefcase,
   faNewspaper,
   faEnvelopeOpen,
-  faSuitcase,
 } from "@fortawesome/free-solid-svg-icons";
 
 export const CONTROL_ICONS = [
@@ -16,5 +15,4 @@ export const CONTROL_ICONS = [
   { key: "/portfolio", icon: faBriefcase },
   { key: "/blog", icon: faNewspaper },
   { key: "/contact", icon: faEnvelopeOpen },
-  { key: "/services", icon: faSuitcase },
 ];

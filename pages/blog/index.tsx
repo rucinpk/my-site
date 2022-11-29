@@ -1,37 +1,47 @@
 import { getAllArticles } from "../../src/utils/mdx";
 import React from "react";
-import Head from "next/head";
 import Link from "next/link";
 import dayjs from "dayjs";
 import Layout from "../../components/Layout/Layout";
 import { Paths } from "../../constants/paths";
+import Image from "next/image";
+import Title from "../../components/Title/Title";
 
 export default function BlogPage({ posts }: any) {
   return (
     <Layout title="Blog | CodiCrypt" currentRoute={Paths.BLOG}>
-      <section className={`section bg-green-800`}>
-        <div className="text-center">
-          <div className="relative uppercase text-5xl z-10 font-bold">
-            My <span>Blogs</span>
-            <span className="absolute font-black -z-10 text-gray-800 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-8xl">
-              My Blogs
-            </span>
-          </div>
-        </div>
+      <section className={`section dark:bg-violet-800 bg-violet-400 pt-8`}>
+        <Title text="My" title="My Blogs" highlightedText="Blogs" />
 
         <div className="blogs-content">
-          <div className="blogs">
+          <div className="grid gap-9 mt-12 grid sm-grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:py-8 pb-8 md:py-8 mt-12 sm:w-3/5 lg:w-3/4  md:w-11/12 m-auto">
             {posts.map((frontMatter: any, key: number) => {
               return (
                 <Link key={key} href={`/blog/${frontMatter.slug}`} passHref>
-                  <div className="blog">
-                    <div className="blog-text">
-                      <h4>{frontMatter.title}</h4>
-                      <p>{frontMatter.excerpt}</p>
-                      <p className="date">
-                        {dayjs(frontMatter.publishedAt).format("MMMM D, YYYY")}{" "}
-                        &mdash; {frontMatter.readingTime}
-                      </p>
+                  {" "}
+                  <div className="[&:hover>img]:shadow-[0px_4px_15px_rgba(0,0,0,0.8)] hover:-translate-y-5 ease-in-out duration-300 hover:shadow-lg relative bg-gray-800 rounded-sm shadow-sm  [&:hover>img]:scale-110 [&:hover>img]:grayscale-0">
+                    <Image
+                      className="bg-violet-500 w-full h-60 object-scale-down ease-in-out duration-300 grayscale "
+                      src={frontMatter.cover_image}
+                      width={400}
+                      height={400}
+                      alt=""
+                    />
+                    <div>
+                      <div className="border-white border-t-8 -mt-1 p-4 bg-white dark:bg-black">
+                        <div className="ease-in-out duration-300 mb-3 text-xl hover:text-violet-800">
+                          {frontMatter.title}
+                        </div>
+                        <p className="text-gray-400 pb-4 leading-8">
+                          {frontMatter.excerpt}
+                        </p>
+                        <p className="date leading-8">
+                          {dayjs(frontMatter.publishedAt).format(
+                            "MMMM D, YYYY"
+                          )}{" "}
+                          &mdash; {frontMatter.readingTime}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </Link>
@@ -47,8 +57,8 @@ export async function getStaticProps() {
   const articles = await getAllArticles();
 
   articles
-    .map((article) => article.data)
-    .sort((a, b) => {
+    .map((article: any) => article.data)
+    .sort((a: any, b: any) => {
       if (a.data.publishedAt > b.data.publishedAt) return 1;
       if (a.data.publishedAt < b.data.publishedAt) return -1;
 

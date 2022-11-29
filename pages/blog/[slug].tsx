@@ -1,6 +1,5 @@
 import dayjs from "dayjs";
 import React from "react";
-import Head from "next/head";
 import Image from "next/image";
 import rehypeSlug from "rehype-slug";
 import { MDXRemote } from "next-mdx-remote";
@@ -13,21 +12,25 @@ import { getSlug, getArticleFromSlug } from "../../src/utils/mdx";
 import { SectionTitle, Text } from "../../data/components/mdx-components";
 import Layout from "../../components/Layout/Layout";
 import { Paths } from "../../constants/paths";
+import Title from "../../components/Title/Title";
 
 export default function Blog({ post: { source, frontmatter } }: any) {
   let title = frontmatter.title + " | My blog";
   return (
     <Layout title={title} currentRoute={Paths.BLOG}>
-      <div className="article-container">
-        <h1 className="article-title">{frontmatter.title}</h1>
-        <p className="publish-date">
+      <section className="section dark:bg-gray-900 bg-gray-200">
+        <div className="pt-12 mt-12">
+          <Title text={frontmatter.title} title="Blog" highlightedText="" />
+        </div>
+
+        <p className="text-center py-2">
           {dayjs(frontmatter.publishedAt).format("MMMM D, YYYY")} &mdash;{" "}
           {frontmatter.readingTime}
         </p>
-        <div className="content">
+        <div className="sm:w-11/12 md:w-3/5 px-4 m-auto text-xl py-8 mb-8">
           <MDXRemote {...source} components={{ Image, SectionTitle, Text }} />
         </div>
-      </div>
+      </section>
     </Layout>
   );
 }

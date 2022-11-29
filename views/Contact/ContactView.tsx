@@ -1,98 +1,116 @@
-import { faDownload } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPaperPlane,
+  faMapMarker,
+  faEnvelope,
+  faUserGraduate,
+  faGlobeEurope,
+  faPhone,
+} from "@fortawesome/free-solid-svg-icons";
+import {
+  faFacebook,
+  faTwitter,
+  faYoutube,
+  faGithub,
+} from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Title from "../../components/Title/Title";
+import Button from "../../components/Button/Button";
 
 type Props = {};
 
 const ContactView = ({}: Props) => {
   return (
-    <section className={`section bg-pink-800`}>
-      <div className="text-center">
-        <div className="relative uppercase text-5xl z-10 font-bold">
-          Contact <span className="text-green-400">Me</span>
-          <span className="absolute font-black -z-10 text-gray-800 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-8xl">
-            Contact
-          </span>
-        </div>
-      </div>
-      <div className="flex pt-12">
-        <div className="left-contact ">
-          <h4 className="mt-4 text-4xl uppercase">Contact me here</h4>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. In, laborum
-            numquam? Quam excepturi perspiciatis quas quasi.
+    <section className={`section dark:bg-pink-800 bg-pink-400`}>
+      <Title text="Contact" title="Contact" highlightedText="Me" />
+      <div className="flex pt-12 p-8 md:pb-8 sm:pb-16 lg:flex-row sm:flex-col ">
+        <div className="flex-2 ">
+          <div className="mt-4 p-0 leading-8 text-4xl uppercase font-bold">
+            Contact me here
+          </div>
+          <p className="py-4">
+            Want to make software for you? Just write it to me here
           </p>
-          <div className="contact-info">
+          <div className="contact-info p-1">
             <div className="contact-item">
-              <div className="icon">
-                <i className="fas fa-map-marker-alt"></i>
-                <span>Location</span>
+              <div className="icon flex items-center justify-center gap-2">
+                <FontAwesomeIcon icon={faMapMarker} />
+                <span>Location: </span>
               </div>
-              <p>: London, united Kingdom</p>
+              <p>Warsaw, Poland</p>
             </div>
             <div className="contact-item">
-              <div className="icon">
-                <i className="fas fa-envelope"></i>
-                <span>Email</span>
+              <div className="icon flex items-center justify-center gap-2">
+                <FontAwesomeIcon icon={faEnvelope} />
+                <span>Email: </span>
               </div>
               <p>
-                <span>: maclinzuniversal@gmail.com</span>
+                <span>rucinpk@gmail.com</span>
               </p>
             </div>
             <div className="contact-item">
-              <div className="icon">
-                <i className="fas fa-user-graduate"></i>
-                <span>Education</span>
+              <div className="icon flex items-center justify-center gap-2">
+                <FontAwesomeIcon icon={faUserGraduate} />
+                <span>Education: </span>
               </div>
               <p>
-                <span>: Sussex University, East Sussex</span>
+                <span>Military University of Technology</span>
               </p>
             </div>
             <div className="contact-item">
-              <div className="icon">
-                <i className="fas fa-user-graduate"></i>
-                <span>Mobile Number</span>
+              <div className="icon flex items-center justify-center gap-2">
+                <FontAwesomeIcon icon={faPhone} />
+                <span>Mobile Number: </span>
               </div>
               <p>
-                <span>: 07522670617</span>
+                <span>+48 696 555 402</span>
               </p>
             </div>
             <div className="contact-item">
-              <div className="icon">
-                <i className="fas fa-globe-africa"></i>
-                <span>Languages</span>
+              <div className="icon flex items-center justify-center gap-2">
+                <FontAwesomeIcon icon={faGlobeEurope} />
+                <span>Languages: </span>
               </div>
               <p>
-                <span>: Afrikaans, English, Spanish</span>
+                <span>English, Polish, Japanese</span>
               </p>
             </div>
           </div>
           <div className="contact-icons">
             <div className="contact-icon">
-              <a href="www.facebook.com" target="_blank">
-                <i className="fab fa-facebook-f"></i>
+              <a
+                href="www.facebook.com"
+                className="bg-gray-800"
+                target="_blank"
+              >
+                <FontAwesomeIcon icon={faFacebook} />
               </a>
-              <a href="#" target="_blank">
-                <i className="fab fa-twitter"></i>
+              <a href="#" className="bg-gray-800" target="_blank">
+                <FontAwesomeIcon icon={faGithub} />
               </a>
-              <a href="#" target="_blank">
-                <i className="fab fa-github"></i>
+              <a href="#" className="bg-gray-800" target="_blank">
+                <FontAwesomeIcon icon={faTwitter} />
               </a>
-              <a href="#" target="_blank">
-                <i className="fab fa-youtube"></i>
+              <a href="#" className="bg-gray-800" target="_blank">
+                <FontAwesomeIcon icon={faYoutube} />
               </a>
             </div>
           </div>
         </div>
-        <div className="right-contact">
+        <div className="flex-3 sm:ml-0 md:ml-8 sm:pb-16 md:pb-8">
           <form action="" className="contact-form">
-            <div className="input-control i-c-2">
+            <div className="my-4 mx-0 flex">
               <input type="text" required placeholder="YOUR NAME" />
-              <input type="email" required placeholder="YOUR EMAIL" />
+              <input
+                className="ml-5"
+                type="email"
+                required
+                placeholder="YOUR EMAIL"
+              />
             </div>
-            <div className="input-control">
+            <div className="my-5 mx-0">
               <input type="text" required placeholder="ENTER SUBJECT" />
             </div>
-            <div className="input-control">
+            <div className="my-4 mx-0 flex">
               <textarea
                 name=""
                 id=""
@@ -101,17 +119,7 @@ const ContactView = ({}: Props) => {
                 placeholder="Message Here..."
               ></textarea>
             </div>
-            <div className="submit-btn">
-              <a
-                href=""
-                className="rounded-large font-semibold relative border-2 border-violet-800 flex self-start items-center overflow-hidden"
-              >
-                <span className="px-6 py-0 text-amber-200 z-10">Submit</span>
-                <span className="btn-icon bg-violet-700 flex items-center justify-center rounded-full p-4 z-10">
-                  <FontAwesomeIcon icon={faDownload} />
-                </span>
-              </a>
-            </div>
+            <Button text="Submit" onClick={() => {}} icon={faPaperPlane} />
           </form>
         </div>
       </div>

@@ -1,16 +1,17 @@
 import Image from "next/image";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Button from "../../components/Button/Button";
 
 type Props = {};
 
 const AboutView = ({}: Props) => {
   return (
-    <div className="section bg-green-900 header-content grid grid-cols-2 min-h-screen">
-      <div className="left-header">
-        <div className="h-shape"></div>
-        <div className="image">
+    <div className="section bg-green-400 dark:bg-green-900 grid sm:grid-cols-1 md:grid-cols-2 sm:pb-16 md:p-0 min-h-screen">
+      <div className="flex relative items-center  sm:row-start-2 md:row-start-1 md:col-start-1 sm:col-start-1">
+        <div className="h-shape bg-violet-500 dark:bg-violet-800 sm:hidden md:block h-full"></div>
+        <div className="image rounded-large h-1/2 w-3/5 sm:m-auto md:ml-16 flex justify-center items-end bg-black z-10">
           <Image
+            className="object-cover grayscale hover:grayscale-0 ease-in-out duration-300"
             src="/images/me.png"
             quality={100}
             width={400}
@@ -19,23 +20,16 @@ const AboutView = ({}: Props) => {
           />
         </div>
       </div>
-      <div className="right-header">
-        <h1 className="name">
-          Hi, I'm <span>Patryk.</span>
+      <div className="flex flex-col justify-center sm:items-center md:items-baseline px-5 sm:pb-20 sm:row-start-1 md:row-start-1 md:col-start-2 sm:col-start-1">
+        <div className="name md:pt-0 sm:pt-12">
+          Hi, I'm <span className="text-violet-600">Patryk.</span>
           <br />A Software Engineer.
-        </h1>
-        <p>I love creating Web3, AI and Computer Vision Apps.</p>
-        <div className="flex self-start">
-          <a
-            href=""
-            className="rounded-large font-semibold relative border-2 border-violet-800 flex self-start items-center overflow-hidden"
-          >
-            <span className="px-6 py-0 text-amber-200 z-10">Download CV</span>
-            <span className="btn-icon bg-violet-700 flex items-center justify-center rounded-full p-4 z-10">
-              <FontAwesomeIcon icon={faDownload} />
-            </span>
-          </a>
         </div>
+        <p className="py-4">
+          I love creating Web3, AI and Computer Vision Apps. <br />
+          Me and my team can create it for you!
+        </p>
+        <Button text="Download CV" onClick={() => {}} icon={faDownload} />
       </div>
     </div>
   );
