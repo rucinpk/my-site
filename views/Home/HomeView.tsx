@@ -16,8 +16,8 @@ const HomeView = ({}: Props) => {
         <div className="sm:pr-0 md:pr-20">
           <div className="text-4xl uppercase">Information About me</div>
           <p className="leading-8 md:p-4 sm:p-0 sm:py-4">
-            I am software engineer experienced in FinTech and CyberSecurity. I
-            am technology geek, loving blockchain AR and AI. Domains. <br />{" "}
+            I am software engineer experienced in FinTech and CyberSecurity
+            Domains. I am technology geek, loving blockchain AR and AI. . <br />{" "}
             <br /> I love learning and trying new things. In my free time I dive
             🤿, learn natural (日本語, Русский) and programming languages, read
             business and science books, play piano 🎹, guitar 🎸 and computer

@@ -1,5 +1,5 @@
 import { getAllArticles } from "../../src/utils/mdx";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import dayjs from "dayjs";
 import Layout from "../../components/Layout/Layout";
@@ -8,11 +8,12 @@ import Image from "next/image";
 import Title from "../../components/Title/Title";
 
 export default function BlogPage({ posts }: any) {
+  let [filters, setFilters] = useState<string[]>([]);
+  const updateFilters = (tag: string) => {};
   return (
     <Layout title="Blog | CodiCrypt" currentRoute={Paths.BLOG}>
       <section className={`section dark:bg-violet-800 bg-violet-400 pt-8`}>
         <Title text="My" title="My Blogs" highlightedText="Blogs" />
-
         <div className="blogs-content">
           <div className="grid gap-9 mt-12 grid sm-grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:py-8 pb-8 md:py-8 mt-12 sm:w-3/5 lg:w-3/4  md:w-11/12 m-auto">
             {posts.map((frontMatter: any, key: number) => {
@@ -28,7 +29,7 @@ export default function BlogPage({ posts }: any) {
                       alt=""
                     />
                     <div>
-                      <div className="border-white border-t-8 -mt-1 p-4 bg-white dark:bg-black">
+                      <div className="dark:border-white border-black border-t-8 -mt-1 p-4 bg-white dark:bg-black">
                         <div className="ease-in-out duration-300 mb-3 text-xl hover:text-violet-800">
                           {frontMatter.title}
                         </div>
@@ -41,6 +42,18 @@ export default function BlogPage({ posts }: any) {
                           )}{" "}
                           &mdash; {frontMatter.readingTime}
                         </p>
+                        <div className="flex flex-row gap-2">
+                          {frontMatter?.tags?.map((tag: string) => (
+                            <div
+                              onClick={() => {
+                                updateFilters(tag);
+                              }}
+                              className="bg-gray-400 rounded-sm p-1 hover:bg-gray-800 ease-in-out duration-300"
+                            >
+                              {tag}
+                            </div>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -57,14 +70,12 @@ export async function getStaticProps() {
   const articles = await getAllArticles();
 
   articles
-    .map((article: any) => article.data)
     .sort((a: any, b: any) => {
-      if (a.data.publishedAt > b.data.publishedAt) return 1;
-      if (a.data.publishedAt < b.data.publishedAt) return -1;
-
+      if (a.publishedAt > b.publishedAt) return 1;
+      if (a.publishedAt < b.publishedAt) return -1;
       return 0;
-    });
-
+    })
+    .map((article: any) => article.data);
   return {
     props: {
       posts: articles.reverse(),

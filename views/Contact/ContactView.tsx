@@ -15,6 +15,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Title from "../../components/Title/Title";
 import Button from "../../components/Button/Button";
+import CalendlyComponent from "../../components/Calendly/Calendly";
 
 type Props = {};
 
@@ -22,7 +23,7 @@ const ContactView = ({}: Props) => {
   return (
     <section className={`section dark:bg-pink-800 bg-pink-400`}>
       <Title text="Contact" title="Contact" highlightedText="Me" />
-      <div className="flex pt-12 p-8 md:pb-8 sm:pb-16 lg:flex-row sm:flex-col ">
+      <div className="flex pt-12 p-8 md:pb-1 sm:pb-16 lg:flex-row sm:flex-col ">
         <div className="flex-2 ">
           <div className="mt-4 p-0 leading-8 text-4xl uppercase font-bold">
             Contact me here
@@ -96,7 +97,7 @@ const ContactView = ({}: Props) => {
             </div>
           </div>
         </div>
-        <div className="flex-3 sm:ml-0 md:ml-8 sm:pb-16 md:pb-8">
+        <div className="flex-3 sm:ml-0 md:ml-8 pb-1 sm:pb-16">
           <form action="" className="contact-form">
             <div className="my-4 mx-0 flex">
               <input type="text" required placeholder="YOUR NAME" />
@@ -122,6 +123,9 @@ const ContactView = ({}: Props) => {
             <Button text="Submit" onClick={() => {}} icon={faPaperPlane} />
           </form>
         </div>
+      </div>
+      <div>
+        <CalendlyComponent />
       </div>
     </section>
   );
