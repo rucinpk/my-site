@@ -45,6 +45,7 @@ export default function BlogPage({ posts }: any) {
                         <div className="flex flex-row gap-2">
                           {frontMatter?.tags?.map((tag: string) => (
                             <div
+                              key={tag}
                               onClick={() => {
                                 updateFilters(tag);
                               }}
