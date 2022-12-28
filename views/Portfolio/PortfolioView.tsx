@@ -35,30 +35,43 @@ const PortfolioView = ({}: Props) => {
                 {portfolioItem.name}
               </div>
               <div className="flex items-center justify-center gap-4 ">
-                <Tooltip tooltipText="Source code" orientation="bottom">
-                  <a
-                    href="#"
-                    className="bg-gray-800 rounded-full flex items-center justify-center mx-1 mx-1 w-10 h-10 hover:bg-green-800 ease-in-out duration-300"
-                  >
-                    <FontAwesomeIcon icon={faCode} />
-                  </a>
-                </Tooltip>
-                <Tooltip tooltipText="Case Study" orientation="bottom">
-                  <a
-                    href="#"
-                    className="bg-gray-800 rounded-full flex items-center justify-center mx-1 mx-1 w-10 h-10 hover:bg-green-800 ease-in-out duration-300"
-                  >
-                    <FontAwesomeIcon icon={faInfo} />
-                  </a>
-                </Tooltip>
-                <Tooltip tooltipText="Project URL" orientation="bottom">
-                  <a
-                    href="#"
-                    className="bg-gray-800 rounded-full flex items-center justify-center mx-1 mx-1 w-10 h-10 hover:bg-green-800 ease-in-out duration-300"
-                  >
-                    <FontAwesomeIcon icon={faLink} />
-                  </a>
-                </Tooltip>
+                {portfolioItem.isClosedSource ? (
+                  <></>
+                ) : (
+                  <Tooltip tooltipText="Source code" orientation="bottom">
+                    <a
+                      href={portfolioItem.codeRepoUrl}
+                      className="bg-gray-800 rounded-full flex items-center justify-center mx-1 mx-1 w-10 h-10 hover:bg-green-800 ease-in-out duration-300"
+                    >
+                      <FontAwesomeIcon icon={faCode} />
+                    </a>
+                  </Tooltip>
+                )}
+                {portfolioItem.hasCaseStudy ? (
+                  <Tooltip tooltipText="Case Study" orientation="bottom">
+                    <a
+                      href={portfolioItem.infoUrl}
+                      className="bg-gray-800 rounded-full flex items-center justify-center mx-1 mx-1 w-10 h-10 hover:bg-green-800 ease-in-out duration-300"
+                    >
+                      <FontAwesomeIcon icon={faInfo} />
+                    </a>
+                  </Tooltip>
+                ) : (
+                  <></>
+                )}
+
+                {portfolioItem.isInternal ? (
+                  <></>
+                ) : (
+                  <Tooltip tooltipText="Project URL" orientation="bottom">
+                    <a
+                      href={portfolioItem.siteUrl}
+                      className="bg-gray-800 rounded-full flex items-center justify-center mx-1 mx-1 w-10 h-10 hover:bg-green-800 ease-in-out duration-300"
+                    >
+                      <FontAwesomeIcon icon={faLink} />
+                    </a>
+                  </Tooltip>
+                )}
               </div>
             </div>
           </div>

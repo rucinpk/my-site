@@ -6,4 +6,22 @@ cover_image: "/images/portfolio/vision.png"
 tags: ["block-ciphers", "rust", "coded", "aes"]
 ---
 
-rest of the content falls here
+AES, or Advanced Encryption Standard, is a widely used encryption algorithm that is designed to be secure and efficient. It is a block cipher that operates on fixed-size blocks of data, typically 128 bits in length, and it uses a secret key to encrypt and decrypt the data.
+
+RUST is a programming language that is known for its safety, performance, and concurrency. It is a popular choice for implementing cryptographic algorithms due to its strong type system and memory safety guarantees.
+
+In this blog post, we will examine the process of implementing AES in RUST. We will explore the design of the AES algorithm and discuss the steps involved in implementing it in RUST.
+
+To implement AES in RUST, we will need to start by understanding the structure of the algorithm. AES is a block cipher that operates on fixed-size blocks of data, and it uses a secret key to encrypt and decrypt the data. The key size can be 128, 192, or 256 bits, and the block size is always 128 bits.
+
+The AES algorithm consists of several rounds, each of which performs a series of transformations on the data. These transformations include substitution, permutation, and mixing of the data. The specific transformations that are performed in each round depend on the key size and the round number.
+
+Once we have a basic understanding of the AES algorithm, we can begin the process of implementing it in RUST. The first step is to define the types and structures that we will need to represent the data and the key. We will need to define a struct to represent the key and a struct to represent the block of data.
+
+Next, we will need to implement the functions that perform the various transformations of the data. These functions will include substitution, permutation, and mixing functions. We will also need to implement the functions that perform the key expansion, which is the process of generating the round keys from the secret key.
+
+Finally, we will need to implement the main encryption and decryption functions. These functions will take a block of data and a key as input, and they will perform the necessary transformations to encrypt or decrypt the data.
+
+Implementing AES in RUST requires a solid understanding of the algorithm and the ability to write efficient and correct code. By following best practices for cryptographic implementation and testing our implementation thoroughly, we can ensure that our AES implementation is secure and reliable.
+
+In conclusion, AES is a widely used encryption algorithm that is designed to be secure and efficient. Implementing AES in RUST requires a solid understanding of the algorithm and the ability to write efficient and correct code. By following best practices for cryptographic implementation and testing our implementation thoroughly, we can ensure that our AES implementation is secure and reliable.

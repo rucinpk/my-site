@@ -9,6 +9,11 @@ module.exports = {
     "./views/**/*.{js,ts,jsx,tsx}"
   ],
   darkMode: 'class',
+  safelist: [
+    'w-11/12',
+    'w-4/5',
+    'w-3/5'
+  ],
   theme: {
     screens: {
       ...defaultTheme.screens,

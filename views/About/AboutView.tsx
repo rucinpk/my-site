@@ -29,7 +29,13 @@ const AboutView = ({}: Props) => {
           I love creating Web3, AI and Computer Vision Apps. <br />
           Me and my team can create it for you!
         </p>
-        <Button text="Download CV" onClick={() => {}} icon={faDownload} />
+        <Button
+          text="Download CV"
+          onClick={() => {
+            location.href = "/api/getCV";
+          }}
+          icon={faDownload}
+        />
       </div>
     </div>
   );

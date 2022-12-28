@@ -5,7 +5,6 @@ import { SKILLS } from "../../constants/skills";
 import { TIMELINE } from "../../constants/timeline";
 import Button from "../../components/Button/Button";
 import { ABOUT_ITEMS } from "../../constants/aboutItems";
-
 type Props = {};
 
 const HomeView = ({}: Props) => {
@@ -23,11 +22,20 @@ const HomeView = ({}: Props) => {
             business and science books, play piano 🎹, guitar 🎸 and computer
             games 🎮.
           </p>
-          <Button text="Download CV" onClick={() => {}} icon={faDownload} />
+          <Button
+            text="Download CV"
+            onClick={() => {
+              location.href = "/api/getCV";
+            }}
+            icon={faDownload}
+          />
         </div>
         <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
           {ABOUT_ITEMS.map((item) => (
-            <div className="border-2 cursor-default rounded-lg shadow-md border-gray-600 ease-in-out duration-300 hover:shadow-lg hover:border-gray-100 hover:-translate-y-5 ">
+            <div
+              key={item.titlePart1}
+              className="border-2 cursor-default rounded-lg shadow-md border-gray-600 ease-in-out duration-300 hover:shadow-lg hover:border-gray-100 hover:-translate-y-5 "
+            >
               <div className="p-7 flex flex-col md:items-baseline sm:items-center">
                 <p className="text-5xl font-bold">{item.number}</p>
                 <p className="text-xl  sm:text-center md:text-left sm:pl-0 md:pl-12 sm:pt-1 md:pt-0 relative uppercase tracking-wide before:content-[''] before:absolute before:left-0 before:top-8 before:bg-gray-600 before:w-10 md:before:h-px">
@@ -50,7 +58,7 @@ const HomeView = ({}: Props) => {
                 <p className="prog-text">{skill.percentage}</p>
                 <div className="progress bg-gray-700 relative ml-6 h-2 w-full">
                   <span
-                    className={` ${skill.width} absolute top-0 left-0 h-full bg-green-400`}
+                    className={`absolute top-0 left-0 ${skill.width} h-full bg-green-400`}
                   ></span>
                 </div>
               </div>
